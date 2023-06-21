@@ -1,0 +1,5 @@
+.DS_Store
+node_modules/
+# Because they are used for testing
+*.html
+*.pdf
