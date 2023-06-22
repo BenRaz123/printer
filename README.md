@@ -1,2 +1,4 @@
-# Printer - A easy way to send source code to a printer
-### ⚠️ This project is still in beta and is not in a working state ⚠️
+# Printer
+Printer is a python script that allows you to quickly print (or save to pdf) syntax-highlighted versions of source code
+## Dependencies
+Printer depends on the `highlight` command as well as `pypetteer`
