@@ -1,4 +1,3 @@
-
 # Imports
 
 import sys
@@ -6,8 +5,9 @@ import os
 from pyppeteer import launch
 import asyncio
 
+
 async def main():
-    try: 
+    try:
         input = sys.argv[1]
     except:
         print("Please give an input file")
@@ -22,19 +22,21 @@ async def main():
     # Creating the html file
 
     try:
-        os.system(f"/opt/homebrew/bin/highlight -i {input} -o __TMP__.html -O html -k 'JetBrainsMono Nerd Font' -K 12 -l --inline-css -T {input} -W")
+        os.system(
+            f"/opt/homebrew/bin/highlight -i {input} -o __TMP__.html -O html -k 'JetBrainsMono Nerd Font' -K 12 -l --inline-css -T {input} -W"
+        )
     except:
         print("Highlighting did not work!")
 
     # Converting it to PDF
-    
+
     browser = await launch()
     page = await browser.newPage()
-    await page.goto(f'file://{os.getcwd()}/__TMP__.html')
+    await page.goto(f"file://{os.getcwd()}/__TMP__.html")
     await page.pdf(path=pdf_path)
     await browser.close()
     print("Success!")
-    
+
     # Printing the PDF
 
     os.remove("__TMP__.html")
@@ -47,5 +49,6 @@ async def main():
         print("lp Failed!")
 
     os.remove(pdf_path)
+
 
 asyncio.run(main())
